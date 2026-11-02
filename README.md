@@ -47,7 +47,7 @@ In the selected relocation scenario, the Evaluator uses Muse Spark Open through 
 
 Whatiff records the original and modified images, policy decisions, and validation evidence for all three scenarios. Each remains **Needs Review** until the required checks and independent action criteria are satisfied.
 
-![Whatiff local demo](docs/demo.png)
+![Whatiff local demo](docs/demo_image.png)
 
 ### Human Review and Data Verification
 
