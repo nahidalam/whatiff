@@ -41,7 +41,7 @@ In this cooking example, the robot's task is to pick up a spoon to stir vegetabl
 
 - **Occlusion:** Partially hides the spoon to test whether the robot can still identify it.
 - **Distractor:** Introduces a similar object to test whether the robot can distinguish the intended target.
-- **Relocation:** Moves the spoon from the plate to the metal rack beside the stove to test whether the robot can identify it in a new location.
+- **Relocation:** Moves the spoon from the plate to the right of the metal rack beside the stove to test whether the robot can identify it in a new location.
 
 In the selected relocation scenario, the Evaluator uses Muse Spark Open through Baseten. **The policy selects `PICK_TARGET` and identifies the relocated spoon on the metal rack.** This demonstrates target recognition in the generated observation, not successful physical pickup.
 
