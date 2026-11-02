@@ -45,7 +45,7 @@ test('saved replay, image comparison, evidence and JSON export', async ({ page }
   if (status.meta_configured && status.baseten_configured) await expect(page.getByRole('button', { name: 'Run Experiments' })).toBeEnabled();
   else await expect(page.getByRole('button', { name: 'Run Experiments' })).toBeDisabled();
   const folderLink = page.locator('.saved-files a');
-  await expect(folderLink).toContainText('/data/web/');
+  await expect(folderLink).toHaveText('Scenario Results');
   await expect(folderLink).toHaveAttribute('href', /^file:\/\//);
   await page.route('**/api/runs/*/reveal', route => route.fulfill({ json: { path: 'mock-folder' } }));
   const revealed = page.waitForRequest(request => request.url().endsWith('/reveal') && request.method() === 'POST');

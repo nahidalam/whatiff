@@ -207,7 +207,7 @@ function App() {
 
         {current && complete && <ReviewPanel key={`${run.id}-${current.id}`} run={run} item={current} onSaved={setRun}/>}
       </section>
-      {complete && <div className="saved-files"><span>Generated Data</span><a href={run.artifact_directory ? `file://${run.artifact_directory}` : '#'} onClick={async event => { event.preventDefault(); try { await api(`/api/runs/${run.id}/reveal`, { method: 'POST' }); } catch (e) { setError(e.message); } }}>{run.artifact_directory || `data/web/${run.id}`}</a><small>Open in Finder</small></div>}
+      {complete && <div className="saved-files"><span>Generated Data</span><a href={run.artifact_directory ? `file://${run.artifact_directory}` : '#'} onClick={async event => { event.preventDefault(); try { await api(`/api/runs/${run.id}/reveal`, { method: 'POST' }); } catch (e) { setError(e.message); } }}>Scenario Results</a><small>Open in Finder</small></div>}
     </main>
   </div>;
 }
