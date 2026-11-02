@@ -11,7 +11,17 @@ Synthetic data can fill these gaps, but generating more data is not enough. The 
 
 Result? **More useful test data, faster discovery of robot weaknesses, and fewer unexpected failures in the real world.**
 
+### Scenario Generation and Robot Evaluation
+
+Whatiff generates alternative scenarios from real first-person observations and tests how robot policies respond. Three agents coordinate scenario planning, image generation, and evaluation using Meta's Muse Spark, Muse Image, and Muse Spark Open via Baseten. The interface compares original and modified observations alongside recorded policy decisions.
+
 ![Whatiff local demo](docs/demo.png)
+
+### Human Review and Data Verification
+
+Whatiff automatically checks generated scenarios for validity and evaluates robot decisions against predefined criteria. A human reviewer has the final go/no-go decision on accepting the data. In this cooking example, the reviewer can inspect the modified scene, confirm the intended changes, and independently approve acceptable robot actions. Scenarios that fail required checks or lack sufficient evidence remain inconclusive, even with human approval.
+
+![Whatiff review and independent expected actions](docs/review.png)
 
 **Three-minute demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw).
 
