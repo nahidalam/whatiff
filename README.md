@@ -2,10 +2,10 @@
 
 <h3 align="center">Intelligence for Reliable Robots</h3>
 
-[![Watch the Whatiff demo](docs/demo-video.png)](https://youtu.be/sJOoJy0t5pw)
+[![Watch the Whatiff demo](docs/demo-video.png)](https://youtu.be/xK-Vse46Ee0)
 
 <p align="center">
-  <a href="https://youtu.be/sJOoJy0t5pw">Demo Video</a> · X Thread
+  <a href="https://youtu.be/xK-Vse46Ee0">Demo Video</a> · X Thread
 </p>
 
 ## Meta Global AI Hackathon 2026: Submission Overview
