@@ -1,6 +1,6 @@
 <h1 align="center">Whatiff</h1>
 
-<h3 align="center">Verified Data Generation for Physical AI</h3>
+<h3 align="center">Intelligent Data Generation for Physical AI to Prevent Real-World Failures</h3>
 
 [![Watch the Whatiff demo](docs/demo-video.png)](https://youtu.be/sJOoJy0t5pw)
 
@@ -8,8 +8,7 @@
   <a href="https://youtu.be/sJOoJy0t5pw">Demo Video</a> · X Thread
 </p>
 
-## Generate Scenarios. Test Robot Behavior. Prevent Real-World Failures.
-
+## 
 A robot trained to pick up objects may work perfectly until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeatedly setting up scenes, operating robots, and collecting data. Rare failures are even harder to capture because they cannot be reproduced on demand.
 
 Synthetic data can fill these gaps, but generating more data is not enough. The  challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results can be trusted.
