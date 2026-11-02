@@ -156,10 +156,10 @@ failure is manufactured.
 | Generator | Muse Image 1.0; optional SAM 3.1 | Image edits and grounding; the controlled synthetic path uses SAM + Pillow |
 | Evaluator | Muse Spark Open via Baseten, then deterministic scoring | Test the policy on original and modified observations; score against independent criteria |
 
-The policy is the system under test, not a fourth agent. Muse Spark Open is
+The policy is the system under test. Muse Spark Open is
 load-bearing in the default live workflow: both original and edited observations
 must produce policy responses for evaluation to complete. It receives only one
-image, the task, and fixed action definitions/instructions—never intervention
+image, the task, and fixed action definitions/instructions - never intervention
 metadata, Adversary predictions, or expected answers. It does not verify edits or
 define scoring criteria. Model and provider are recorded in metadata and exports.
 
@@ -263,10 +263,3 @@ EPIC-KITCHENS by Dima Damen et al., licensed **CC BY-NC 4.0**. See
 [source videos, timestamps, and modifications](public/examples/SOURCES.md).
 The noncommercial restriction applies to these images; generated edits are derived
 from them. No dataset affiliation or endorsement is implied.
-
-Follow the [three-minute presenter script](docs/demo-script.md). Hosting is not
-required. Clearly distinguish replayed decisions from optional fresh live calls.
-
-<a id="demo-video"></a>
-**Demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw). Use recorded replay for a predictable presentation;
-fresh live inference depends on provider access and latency.
