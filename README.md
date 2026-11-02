@@ -1,6 +1,6 @@
 <h1 align="center">Whatiff</h1>
 
-<h3 align="center">Intelligent Data Generation for Physical AI to Prevent Real-World Failures</h3>
+<h3 align="center">Intelligence for Reliable Robots</h3>
 
 [![Watch the Whatiff demo](docs/demo-video.png)](https://youtu.be/sJOoJy0t5pw)
 

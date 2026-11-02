@@ -124,7 +124,7 @@ test('potential failures and inconclusive cases stay distinct', async ({ page })
 
 test('real egocentric input is the default, without model calls', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { name: 'Intelligent Data Generation for Physical AI to Prevent Real-World Failures', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Intelligence for Reliable Robots', exact: true })).toBeVisible();
   await expect(page.getByText('Examples', { exact: true })).toBeVisible();
   const input = page.locator('.comparison img');
   await expect(input).toHaveCount(1);
@@ -201,7 +201,7 @@ test('running live after replay sends the displayed original image', async ({ pa
 test('desktop headline is one line and run button is below settings', async ({ page }) => {
   await page.setViewportSize({ width: 1069, height: 900 });
   await page.goto('/');
-  const heading = page.getByRole('heading', { level: 3, name: 'Intelligent Data Generation for Physical AI to Prevent Real-World Failures' });
+  const heading = page.getByRole('heading', { level: 3, name: 'Intelligence for Reliable Robots' });
   const layout = await heading.evaluate(node => { const range = document.createRange(); range.selectNodeContents(node); return { lines: range.getClientRects().length, width: document.documentElement.scrollWidth, viewport: innerWidth }; });
   expect(layout.lines).toBe(1);
   expect(layout.width).toBeLessThanOrEqual(layout.viewport);
