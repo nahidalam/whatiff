@@ -176,9 +176,9 @@ function App() {
 
   const originalImage = run?.original?.image_url || preview;
   return <div className="shell">
-    <header className="topbar"><a className="brand" href="/" aria-label="Whatiff home"><span className="brand-mark"><i/><i/><i/><i/></span>whatiff<span className="brand-period">.</span></a><span className="top-caption">VERIFIED DATA FOR PHYSICAL AI</span></header>
+    <header className="topbar"><a className="brand" href="/" aria-label="Whatiff home"><span className="brand-mark"><i/><i/><i/><i/></span>whatiff<span className="brand-period">.</span></a></header>
     <main>
-      <section className="hero"><div><h1>Generate Scenarios. Test Robot Behavior. Prevent Real-World Failures.</h1><p>Create new scenarios from real robot observations, test how robots respond,  identify potential failures before they happen in the real world.</p></div></section>
+      <section className="hero"><div><h3>Intelligent Data Generation for Physical AI to Prevent Real-World Failures</h3><p>Create new scenarios from real robot observations, test how robots respond,  identify potential failures before they happen in the real world.</p></div></section>
       <details className="demo-settings"><summary>Change task, image or generator <span>Optional</span></summary>
       <form id="live-demo" className="setup" onSubmit={live}>
         <div className="task-input"><label htmlFor="task">01 / TASK INSTRUCTION</label><input id="task" value={task} maxLength={2000} onChange={e => setTask(e.target.value)} required disabled={running}/></div>

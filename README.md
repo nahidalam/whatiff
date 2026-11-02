@@ -8,29 +8,6 @@
   <a href="https://youtu.be/sJOoJy0t5pw">Demo Video</a> · X Thread
 </p>
 
-## 
-A robot trained to pick up objects may work perfectly until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeatedly setting up scenes, operating robots, and collecting data. Rare failures are even harder to capture because they cannot be reproduced on demand.
-
-Synthetic data can fill these gaps, but generating more data is not enough. The  challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results can be trusted.
-
-**Whatiff** turns existing robot observations into new test scenarios, evaluates how robots respond, and verifies the results. Each scenario comes with evidence of what changed, how the robot responded, and whether the data is suitable for evaluation.
-
-Result? **More useful test data, faster discovery of robot weaknesses, and fewer unexpected failures in the real world.**
-
-### Scenario Generation and Robot Evaluation
-
-Whatiff generates alternative scenarios from real first-person observations and tests how robot policies respond. Three agents coordinate scenario planning, image generation, and evaluation using Meta's Muse Spark, Muse Image, and Muse Spark Open via Baseten. The interface compares original and modified observations alongside recorded policy decisions.
-
-![Whatiff local demo](docs/demo.png)
-
-### Human Review and Data Verification
-
-Whatiff automatically checks generated scenarios for validity and evaluates robot decisions against predefined criteria. A human reviewer has the final go/no-go decision on accepting the data. In this cooking example, the reviewer can inspect the modified scene, confirm the intended changes, and independently approve acceptable robot actions. Scenarios that fail required checks or lack sufficient evidence remain inconclusive, even with human approval.
-
-![Whatiff review and independent expected actions](docs/review.png)
-
-**Three-minute demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw).
-
 ## Meta Global AI Hackathon 2026: Submission Overview
 
 - **Track:** Startup
@@ -46,8 +23,39 @@ Whatiff automatically checks generated scenarios for validity and evaluates robo
   - Deterministic scoring: Independent evaluation logic, not an AI model.
 - **Bonus categories targeted:** Best Build on Meta Open Weight Models and
   Best Agentic Use-Case. 
-- **Three-minute demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw).
 - **Quickstart:** [Local setup and keyless replay](#quickstart).
+
+
+## 
+A robot trained to pick up objects may work perfectly until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeatedly setting up scenes, operating robots, and collecting data. Rare failures are even harder to capture because they cannot be reproduced on demand.
+
+Synthetic data can fill these gaps, but generating more data is not enough. The  challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results can be trusted.
+
+**Whatiff** turns existing robot observations into new test scenarios, evaluates how robots respond, and verifies the results. Each scenario comes with evidence of what changed, how the robot responded, and whether the data is suitable for evaluation.
+
+Result? **More useful test data, faster discovery of robot weaknesses, and fewer unexpected failures in the real world.**
+
+### Scenario Generation and Robot Evaluation
+
+In this cooking example, the robot's task is to pick up a spoon to stir vegetables in a pan. Whatiff generates three alternative scenarios to test how the robot responds to changes in the scene:
+
+- **Occlusion:** Partially hides the spoon to test whether the robot can still identify it.
+- **Distractor:** Introduces a similar object to test whether the robot can distinguish the intended target.
+- **Relocation:** Moves the spoon from the plate to the metal rack beside the stove to test whether the robot can identify it in a new location.
+
+In the selected relocation scenario, the Evaluator uses Muse Spark Open through Baseten. **The policy selects `PICK_TARGET` and identifies the relocated spoon on the metal rack.** This demonstrates target recognition in the generated observation, not successful physical pickup.
+
+Whatiff records the original and modified images, policy decisions, and validation evidence for all three scenarios. Each remains **Needs Review** until the required checks and independent action criteria are satisfied.
+
+![Whatiff local demo](docs/demo.png)
+
+### Human Review and Data Verification
+
+Whatiff automatically checks generated scenarios for validity and evaluates robot decisions against predefined criteria. A human reviewer has the final go/no-go decision on accepting the data. In this cooking example, the reviewer can inspect the modified scene, confirm the intended changes, and independently approve acceptable robot actions. Scenarios that fail required checks or lack sufficient evidence remain inconclusive, even with human approval.
+
+![Whatiff review and independent expected actions](docs/review.png)
+
+
 
 ## Why It Matters
 
