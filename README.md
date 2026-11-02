@@ -13,7 +13,7 @@ Result? **More useful test data, faster discovery of robot weaknesses, and fewer
 
 ![Whatiff local demo](docs/demo.png)
 
-**Three-minute demo video:** [Placeholder — upload pending](#demo-video).
+**Three-minute demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw).
 
 ## Meta Global AI Hackathon 2026: Submission Overview
 
@@ -30,7 +30,7 @@ Result? **More useful test data, faster discovery of robot weaknesses, and fewer
   - Deterministic scoring: Independent evaluation logic, not an AI model.
 - **Bonus categories targeted:** Best Build on Meta Open Weight Models and
   Best Agentic Use-Case. 
-- **Three-minute demo video:** Placeholder until uploaded.
+- **Three-minute demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw).
 - **Quickstart:** [Local setup and keyless replay](#quickstart).
 
 ## Why It Matters
@@ -242,8 +242,7 @@ from them. No dataset affiliation or endorsement is implied.
 
 Follow the [three-minute presenter script](docs/demo-script.md). Hosting is not
 required. Clearly distinguish replayed decisions from optional fresh live calls.
-This repository does not claim a completed or uploaded submission video.
 
 <a id="demo-video"></a>
-**Demo video:** Upload pending. Use recorded replay for a predictable presentation;
+**Demo video:** [Watch on YouTube](https://youtu.be/sJOoJy0t5pw). Use recorded replay for a predictable presentation;
 fresh live inference depends on provider access and latency.
