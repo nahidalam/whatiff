@@ -1,18 +1,157 @@
-# Whatiff | Verified Data for Physical AI
+# Generate Scenarios. Test Robot Behavior. Prevent Real-World Failures.
 
-Agentic counterfactual data generation and evaluation for embodied AI. Compare a
-real first-person observation with generated edits and recorded policy decisions.
+**Whatiff — Agentic Verified Data Generation for Physical AI.**
+
+Collecting robot observations means setting up scenes, repeating tasks, and checking
+what actually changed. Real-world failures are expensive to reproduce, and a
+plausible generated image alone does not make trustworthy evaluation data.
+
+Whatiff creates counterfactual observations from an image, tests an isolated
+policy, and packages the results with validation evidence and human review.
+Failure discovery is one application; reusable evaluation records are the output.
 
 ![Whatiff local demo](docs/demo.png)
 
-## Prerequisites
+**Three-minute demo video:** [Placeholder — upload pending](#demo-video).
+
+## Meta Global AI Hackathon 2026: Submission Overview
+
+- **Track:** Startup
+- **Theme:** Push the Frontier
+- **Development period:** October 26 to November 4, 2026 (submission window).
+  The initial Git commit is dated November 2, 2026; bundled synthetic-example
+  provenance records live calls on October 29. Git history does not establish
+  earlier development dates or completion through November 4. Development used
+  Codex and third-party libraries and datasets; no claim of entirely original code.
+- **Meta AI runtime models:**
+  - Muse Spark 1.3: Adversary scenario planning.
+  - Muse Image 1.0: Scene editing.
+  - SAM 3.1: Optional object grounding and validation support.
+  - Muse Spark Open (`meta-models/muse-spark-open-1026`) via Baseten:
+    load-bearing action-selection policy within the Evaluator.
+  - Deterministic scoring: Independent evaluation logic, not an AI model.
+- **Bonus categories targeted:** Best Build on Meta Open Weight Models and
+  Best Agentic Use-Case. Eligibility remains subject to organizer review.
+- **Three-minute demo video:** Placeholder until uploaded.
+- **Quickstart:** [Local setup and keyless replay](#quickstart).
+
+## Why It Matters
+
+Robotics developers, Physical AI labs, and AI data providers need varied
+observations and defensible labels. Collecting every occlusion or object change
+in the physical world takes time; manually checking generated scenes adds another
+review burden.
+
+Whatiff could support paid evaluation and data curation workflows: create
+controlled variations, retain policy responses, and export reviewable records.
+Customers could investigate weaknesses before committing to expensive physical
+tests. This is a commercial hypothesis, not demonstrated traction: no customers,
+revenue, market-size estimate, or production deployment is claimed. The bundled
+noncommercial dataset is demonstration material, not a commercial training asset.
+
+## How It Works
+
+1. **Generate:** Adversary proposes changes; Generator edits the observation.
+2. **Test:** Evaluator sends each image and task independently to the policy.
+3. **Verify:** Check the edit and separately review expected-action criteria.
+4. **Export:** Download compact JSON with actions, outcomes, image references,
+   verification status, and evidence identifiers. Unverified records stay labeled.
+
+```mermaid
+flowchart LR
+    I[Image and task] --> A[Adversary: scenario planning]
+    A --> G[Generator: edit and ground]
+    I --> E[Evaluator: isolated policy testing and deterministic scoring]
+    G --> E
+    G --> H[Human review: edit and independent action criteria]
+    H --> E
+    E --> X[JSON export: verified only when required checks and approvals pass]
+```
+
+## Generated data and export
+
+**Export JSON** downloads the compact evaluation record. The **Generated Data**
+path at the bottom opens that run's folder in Finder on macOS. On Linux/WSL, open
+the displayed path manually; that shortcut is macOS-specific.
+
+Each run is stored under `data/web/<run-id>/`:
+
+| File | Purpose |
+| --- | --- |
+| `evaluation.json` | Compact task/model, image references/actions, scenarios, approval and verification states, outcomes, short reasons, stable evidence IDs |
+| `original.png`, `counterfactual-0.png` through `counterfactual-2.png` | Original and generated images |
+| `report.json` | Internal detailed evidence, dimensions, checks, approval history |
+| Other files/subdirectories | Internal checkpoints, prompts, settings, and raw responses for live runs |
+
+Image paths in the compact JSON are relative; keep it beside the images. Evidence
+IDs use `whatiff:<run-id>:<case-id>`. Replay creates a fresh run; reviews persist in
+that run. Runtime data is ignored by Git, so back up run folders to retain it.
+Legacy reports are archived before correcting task-mismatched criteria.
+
+## Measured Results and Limitations
+
+| Evidence | Observation | Scope |
+| --- | --- | --- |
+| [Portable synthetic fixture](examples/controlled-example.json) and [review](examples/controlled-review.json) | Recorded hosted Muse Spark chose `PICK_TARGET` before and after partial mug occlusion; Pass under the independent invariance criterion | Verified synthetic image-level case; pixels outside the edit region preserved |
+| [Bundled real-image replay](examples/washing-dishes-run/) | Hosted Meta policy decisions and three Muse Image edits are recorded; evaluations remain Inconclusive | Resolution changed; expected actions need independent approval |
+| Local Baseten live validation | Four policy calls: original `PICK_TARGET`; edits `PICK_TARGET`, `ABSTAIN`, `PICK_TARGET`. All three evaluations Inconclusive | One washing-dishes run; eight audited calls total, including one hosted planner and three Muse Image calls. Full audit remains in ignored local runtime data, not the bundled replay |
+| Automated validation at this revision | 114 backend tests and 10 browser tests passed; one API-calling browser test skipped in the latest suite | Backend inference is mocked. The separate preceding live browser run passed; it is not evidence of physical execution |
+
+Replay the synthetic case without credentials:
+
+```sh
+.venv/bin/python -m whatiff.demo --example examples/controlled-example.json
+```
+
+### Interpreting results
+
+Expand **Why this action?** for a policy explanation. Review image edits and
+expected actions separately. Expected actions are task-specific, human-defined,
+and initially unapproved; model predictions never define ground truth.
+
+- **Pass:** action matches an approved criterion for a validated edit.
+- **Potential Failure:** action violates an approved criterion for a validated edit.
+- **Needs review:** UI label for an `inconclusive` evaluation.
+
+The included real-image replay is **not verified**: generated images changed
+resolution, and expected actions require independent approval. Approval controls
+remain available, but failed checks persist and cannot establish a verified result.
+No resolution normalization is performed. Physical execution, grasp success,
+general robustness, and training suitability have not been validated. No policy
+failure is manufactured.
+
+## Meta Model Integration and Three-Agent Architecture
+
+| Agent | Model/tool | Responsibility |
+| --- | --- | --- |
+| Adversary | Hosted Muse Spark 1.3 | Scenario planning and hypotheses; never ground truth |
+| Generator | Muse Image 1.0; optional SAM 3.1 | Image edits and grounding; the controlled synthetic path uses SAM + Pillow |
+| Evaluator | Muse Spark Open via Baseten, then deterministic scoring | Test the policy on original and modified observations; score against independent criteria |
+
+The policy is the system under test, not a fourth agent. Muse Spark Open is
+load-bearing in the default live workflow: both original and edited observations
+must produce policy responses for evaluation to complete. It receives only one
+image, the task, and fixed action definitions/instructions—never intervention
+metadata, Adversary predictions, or expected answers. It does not verify edits or
+define scoring criteria. Model and provider are recorded in metadata and exports.
+
+Hosted Muse Spark 1.3 remains an explicitly selected policy fallback. Baseten
+failure stops the run and identifies the provider; no silent fallback occurs.
+Replay retains its original hosted-model provenance and makes no inference calls.
+The open model is served by Baseten; Whatiff does not self-host weights. This
+functional role supports the targeted open-weight bonus, while the three-agent
+workflow supports the agentic category; neither award eligibility is guaranteed.
+
+## Quickstart
+
+### Prerequisites
 
 - Python 3.9+ with `venv` and `pip`.
 - Node.js 18+ and npm.
 - A modern browser. Commands below work on macOS, Linux, or Windows with WSL.
 - Internet to install dependencies. Replay needs no API key or model calls.
 
-## Run locally — no API key required
+### Run locally — no API key required
 
 Clone this repository (or download its ZIP), open a terminal in its root, and run:
 
@@ -36,7 +175,7 @@ Images, recorded state, hashes, and referenced audit files are included in
 on ignored local data, credentials, or the original recording machine. The other
 selectable kitchen photos are included locally too.
 
-## Optional live Meta calls with your own key
+### Optional live Meta calls with your own keys
 
 Create the local configuration once:
 
@@ -64,58 +203,6 @@ Baseten (default) or hosted Muse Spark as a fallback. A Baseten failure stops th
 run and identifies Baseten; there is no automatic fallback. Retry keeps the
 original provider. Recorded replay uses its recorded hosted Meta decisions and
 makes no new calls; it is never relabeled as a Baseten run.
-
-Exactly three agents remain: Adversary plans, Generator edits/grounds, and Evaluator
-tests the isolated policy then scores it deterministically. Muse Spark Open is used
-only in Evaluator policy testing. It receives one image, the task, and fixed action
-definitions/instructions, never proposals or expected answers. The model and
-provider are saved in evaluation metadata and compact exports.
-
-### Meta Open Weight Models bonus
-
-Muse Spark Open is load-bearing: both original and edited observations must pass
-through it for live action-selection evaluation to complete. Its decisions feed
-independent deterministic scoring; it is not a decorative extra call. This use is
-intended for consideration in **Best Build on Meta Open Weight Models**. The open
-model is served by Baseten; the app does not claim to self-host its weights.
-Final bonus eligibility is determined by the organizers.
-
-## Review and limitations
-
-Expand **Why this action?** for a policy explanation. Review image edits and
-expected actions separately. Expected actions are task-specific, human-defined,
-and initially unapproved; model predictions never define ground truth.
-
-- **Pass:** action matches an approved criterion for a validated edit.
-- **Potential Failure:** action violates an approved criterion for a validated edit.
-- **Needs review:** UI label for an `inconclusive` evaluation.
-
-The included real-image replay is **not verified**: generated images changed
-resolution, and expected actions require independent approval. Approval controls
-remain available, but failed checks persist and cannot establish a verified result.
-No resolution normalization is performed. Physical execution, grasp success,
-general robustness, and training suitability have not been validated. No policy
-failure is manufactured.
-
-## Generated data and export
-
-**Export JSON** downloads the compact evaluation record. The **Generated Data**
-path at the bottom opens that run's folder in Finder on macOS. On Linux/WSL, open
-the displayed path manually; that shortcut is macOS-specific.
-
-Each run is stored under `data/web/<run-id>/`:
-
-| File | Purpose |
-| --- | --- |
-| `evaluation.json` | Compact task/model, image references/actions, scenarios, approval and verification states, outcomes, short reasons, stable evidence IDs |
-| `original.png`, `counterfactual-0.png` through `counterfactual-2.png` | Original and generated images |
-| `report.json` | Internal detailed evidence, dimensions, checks, approval history |
-| Other files/subdirectories | Internal checkpoints, prompts, settings, and raw responses for live runs |
-
-Image paths in the compact JSON are relative; keep it beside the images. Evidence
-IDs use `whatiff:<run-id>:<case-id>`. Replay creates a fresh run; reviews persist in
-that run. Runtime data is ignored by Git, so back up run folders to retain it.
-Legacy reports are archived before correcting task-mismatched criteria.
 
 ## Tests
 
@@ -152,3 +239,7 @@ from them. No dataset affiliation or endorsement is implied.
 Follow the [three-minute presenter script](docs/demo-script.md). Hosting is not
 required. Clearly distinguish replayed decisions from optional fresh live calls.
 This repository does not claim a completed or uploaded submission video.
+
+<a id="demo-video"></a>
+**Demo video:** Upload pending. Use recorded replay for a predictable presentation;
+fresh live inference depends on provider access and latency.
