@@ -1,0 +1,36 @@
+{
+  "mode": "prepared_example",
+  "provenance": "SAM grounding and isolated Muse Spark decisions recorded live on 2026-10-29; independent developer fixture review preceded policy inference. Full API audit retained in the original run.",
+  "source_image": "tabletop-original.png",
+  "original_sha256": "3b427c98afccff4bdd0c8e65e152fda339a840b0d25a6ff41b41056816e07a70",
+  "edited_pixel_sha256": "a1d24c1d152b3459c4976cd7a67f29b6a3d3748173474fd61de1877322d00975",
+  "task": "Pick up the white mug.",
+  "proposal": {
+    "intervention": "occlusion",
+    "description": "Apply one opaque sensor-layer patch to the left portion of the SAM-grounded white mug; keep the remaining rim and right-side handle visible. Preserve all pixels outside the patch.",
+    "rationale": "Test action-selection invariance under partial observation occlusion.",
+    "predicted_action": "PICK_TARGET"
+  },
+  "grounding_box": {
+    "object_id": 0,
+    "x1": 384,
+    "y1": 369,
+    "x2": 621,
+    "y2": 544,
+    "w": 1024,
+    "h": 1024
+  },
+  "recorded_policy_model": "muse-spark-1.3",
+  "recorded_policy_decisions": {
+    "baseline": {
+      "action": "PICK_TARGET",
+      "reason": "White mug is centrally located, fully visible with distinct handle, uniquely identifiable."
+    },
+    "occlusion": {
+      "action": "PICK_TARGET",
+      "reason": "White mug with handle is centered and uniquely identifiable despite partial overlap."
+    }
+  },
+  "expected_action_source": "Separately authored controlled-occlusion.json invariance criterion, independently reviewed before inference.",
+  "scope": "Synthetic observation-only invariance test. PICK_TARGET selects the unique identifiable mug; it does not assert executable grasp success. The sensor-layer patch changes no world object or approach geometry."
+}

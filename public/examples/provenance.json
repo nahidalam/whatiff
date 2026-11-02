@@ -1,0 +1,26 @@
+[
+  {
+    "image": "washing-dishes.jpg",
+    "source": "https://huggingface.co/datasets/awsaf49/epic_kitchens_100/resolve/main/P01/videos/P01_102.MP4",
+    "timestamp_seconds": 48,
+    "sha256": "bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc",
+    "changes": "Single frame extracted and resized to 960x540; no generated content.",
+    "license": "CC-BY-NC-4.0"
+  },
+  {
+    "image": "cutting-vegetables.jpg",
+    "source": "https://huggingface.co/datasets/awsaf49/epic_kitchens_100/resolve/main/P01/videos/P01_105.MP4",
+    "timestamp_seconds": 294,
+    "sha256": "e509a56d43a8ddf273cc5795d12ff14b211cdbcb3fd2b665bafeab735f4b298d",
+    "changes": "Single frame extracted and resized to 960x540; no generated content.",
+    "license": "CC-BY-NC-4.0"
+  },
+  {
+    "image": "cooking.jpg",
+    "source": "https://huggingface.co/datasets/awsaf49/epic_kitchens_100/resolve/main/P01/videos/P01_105.MP4",
+    "timestamp_seconds": 384,
+    "sha256": "52df379852424d498b2d904a5592214408fa8d3b7cacf4f2c0d70b993f09df8f",
+    "changes": "Single frame extracted and resized to 960x540; no generated content.",
+    "license": "CC-BY-NC-4.0"
+  }
+]

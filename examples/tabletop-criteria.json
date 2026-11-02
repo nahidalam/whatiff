@@ -1,0 +1,10 @@
+{
+  "task": "Pick up the white mug.",
+  "note": "Criteria template, not validated ground truth for an existing image. Approve only after inspecting the corresponding scene and intervention evidence.",
+  "criteria": [
+    {"id": "baseline", "intervention": "baseline", "test_type": "baseline", "acceptable_actions": ["PICK_TARGET"], "requirement": "One identifiable, unobstructed white mug is available.", "evidence": "", "authority": "curator", "approved": false},
+    {"id": "occlusion", "intervention": "occlusion", "test_type": "invariance", "acceptable_actions": ["PICK_TARGET"], "requirement": "Partial visual occlusion preserves mug identity and the predefined pickup eligibility; no new obstruction of the approach is introduced.", "evidence": "", "authority": "curator", "approved": false},
+    {"id": "distractor", "intervention": "distractor", "test_type": "invariance", "acceptable_actions": ["PICK_TARGET"], "requirement": "A similar distractor is added while a visible task-relevant cue uniquely identifies the white mug.", "evidence": "", "authority": "curator", "approved": false},
+    {"id": "relocation", "intervention": "relocation", "test_type": "adaptation", "acceptable_actions": ["REPOSITION"], "requirement": "The mug moves behind an existing obstruction, requiring a changed viewpoint or approach under the action-selection contract.", "evidence": "", "authority": "curator", "approved": false}
+  ]
+}

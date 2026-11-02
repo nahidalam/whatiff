@@ -1,0 +1,108 @@
+{
+  "task": "Pick up the white mug.",
+  "original_sha256": "3b427c98afccff4bdd0c8e65e152fda339a840b0d25a6ff41b41056816e07a70",
+  "edited_sha256": "1ed109484daad6b7ad2e5bc966be1c657184a9ef3507a614df4d479d79a5483b",
+  "criteria": [
+    {
+      "id": "baseline",
+      "intervention": "baseline",
+      "test_type": "baseline",
+      "acceptable_actions": [
+        "PICK_TARGET"
+      ],
+      "requirement": "One identifiable, unobstructed white mug is available.",
+      "evidence": "Developer visual fixture review, performed before policy inference: the unique white mug remains identifiable from its exposed circular white rim and unchanged right-side handle. A dark rectangular sensor patch visibly occludes only the left region. Exact RGB comparison establishes zero changed pixels outside the half-open rectangle [384,404,436,509], preserving every unrelated object and all scene geometry. Live SAM independently returned one mug before and after. Under the predeclared synthetic observation-only contract, PICK_TARGET remains appropriate: this is a sensor-layer patch, not an added world object, so it changes no approach geometry by construction. This eligibility assumption is image-level only; physical grasp feasibility was not validated. Expected actions come from the separately authored fixture, not Adversary predictions or policy output.",
+      "authority": "independent_developer_fixture_review",
+      "approved": true
+    },
+    {
+      "id": "occlusion",
+      "intervention": "occlusion",
+      "test_type": "invariance",
+      "acceptable_actions": [
+        "PICK_TARGET"
+      ],
+      "requirement": "Partial visual occlusion preserves mug identity and the predefined pickup eligibility; no new obstruction of the approach is introduced.",
+      "evidence": "Developer visual fixture review, performed before policy inference: the unique white mug remains identifiable from its exposed circular white rim and unchanged right-side handle. A dark rectangular sensor patch visibly occludes only the left region. Exact RGB comparison establishes zero changed pixels outside the half-open rectangle [384,404,436,509], preserving every unrelated object and all scene geometry. Live SAM independently returned one mug before and after. Under the predeclared synthetic observation-only contract, PICK_TARGET remains appropriate: this is a sensor-layer patch, not an added world object, so it changes no approach geometry by construction. This eligibility assumption is image-level only; physical grasp feasibility was not validated. Expected actions come from the separately authored fixture, not Adversary predictions or policy output.",
+      "authority": "independent_developer_fixture_review",
+      "approved": true
+    }
+  ],
+  "review": {
+    "original_sha256": "3b427c98afccff4bdd0c8e65e152fda339a840b0d25a6ff41b41056816e07a70",
+    "edited_sha256": "1ed109484daad6b7ad2e5bc966be1c657184a9ef3507a614df4d479d79a5483b",
+    "task_sha256": "5bbc978501fa5eaf4658e71870106c805ef4a1e923baae76c8a60b430d76960c",
+    "proposal_sha256": "2b5b9c405eec492fa55eac6197341a2ef1c0d4be9aa09c3ccacd68e332fb6995",
+    "criterion_sha256": "7b0836621877924f2c1288c9502572d7a6f93d052418bbd21582ae05bfc5c7ea",
+    "reviewer": "independent_developer_fixture_review",
+    "evidence": "Developer visual fixture review, performed before policy inference: the unique white mug remains identifiable from its exposed circular white rim and unchanged right-side handle. A dark rectangular sensor patch visibly occludes only the left region. Exact RGB comparison establishes zero changed pixels outside the half-open rectangle [384,404,436,509], preserving every unrelated object and all scene geometry. Live SAM independently returned one mug before and after. Under the predeclared synthetic observation-only contract, PICK_TARGET remains appropriate: this is a sensor-layer patch, not an added world object, so it changes no approach geometry by construction. This eligibility assumption is image-level only; physical grasp feasibility was not validated. Expected actions come from the separately authored fixture, not Adversary predictions or policy output.",
+    "regions": [
+      [
+        0.375,
+        0.39453125,
+        0.42578125,
+        0.4970703125
+      ]
+    ],
+    "applied_as_intended": true,
+    "unrelated_content_preserved": true,
+    "plausible_geometry": true,
+    "criterion_conditions_supported": true,
+    "note": "Curator must inspect both images. Set normalized xyxy edit regions and justify all four checks. This is action-selection evidence, not physical validation."
+  },
+  "validity": {
+    "status": "valid",
+    "evidence": "Developer visual fixture review, performed before policy inference: the unique white mug remains identifiable from its exposed circular white rim and unchanged right-side handle. A dark rectangular sensor patch visibly occludes only the left region. Exact RGB comparison establishes zero changed pixels outside the half-open rectangle [384,404,436,509], preserving every unrelated object and all scene geometry. Live SAM independently returned one mug before and after. Under the predeclared synthetic observation-only contract, PICK_TARGET remains appropriate: this is a sensor-layer patch, not an added world object, so it changes no approach geometry by construction. This eligibility assumption is image-level only; physical grasp feasibility was not validated. Expected actions come from the separately authored fixture, not Adversary predictions or policy output.",
+    "source": "curator:independent_developer_fixture_review",
+    "raw": {
+      "review": {
+        "original_sha256": "3b427c98afccff4bdd0c8e65e152fda339a840b0d25a6ff41b41056816e07a70",
+        "edited_sha256": "1ed109484daad6b7ad2e5bc966be1c657184a9ef3507a614df4d479d79a5483b",
+        "task_sha256": "5bbc978501fa5eaf4658e71870106c805ef4a1e923baae76c8a60b430d76960c",
+        "proposal_sha256": "2b5b9c405eec492fa55eac6197341a2ef1c0d4be9aa09c3ccacd68e332fb6995",
+        "criterion_sha256": "7b0836621877924f2c1288c9502572d7a6f93d052418bbd21582ae05bfc5c7ea",
+        "reviewer": "independent_developer_fixture_review",
+        "evidence": "Developer visual fixture review, performed before policy inference: the unique white mug remains identifiable from its exposed circular white rim and unchanged right-side handle. A dark rectangular sensor patch visibly occludes only the left region. Exact RGB comparison establishes zero changed pixels outside the half-open rectangle [384,404,436,509], preserving every unrelated object and all scene geometry. Live SAM independently returned one mug before and after. Under the predeclared synthetic observation-only contract, PICK_TARGET remains appropriate: this is a sensor-layer patch, not an added world object, so it changes no approach geometry by construction. This eligibility assumption is image-level only; physical grasp feasibility was not validated. Expected actions come from the separately authored fixture, not Adversary predictions or policy output.",
+        "regions": [
+          [
+            0.375,
+            0.39453125,
+            0.42578125,
+            0.4970703125
+          ]
+        ],
+        "applied_as_intended": true,
+        "unrelated_content_preserved": true,
+        "plausible_geometry": true,
+        "criterion_conditions_supported": true,
+        "note": "Curator must inspect both images. Set normalized xyxy edit regions and justify all four checks. This is action-selection evidence, not physical validation."
+      },
+      "review_matches": true,
+      "preservation": {
+        "pixel_threshold": 24,
+        "global_changed_fraction": 0.005207061767578125,
+        "original_size": [
+          1024,
+          1024
+        ],
+        "status": "consistent",
+        "reason": "Outside-region pixel comparison (not a semantic or physical guarantee).",
+        "outside_changed_fraction": 0.0,
+        "outside_mean_difference": 0.0,
+        "max_outside_changed_fraction": 0.02,
+        "max_outside_mean_difference": 4,
+        "region_fraction": 0.0053577423095703125,
+        "regions": [
+          [
+            0.375,
+            0.39453125,
+            0.42578125,
+            0.4970703125
+          ]
+        ]
+      }
+    }
+  },
+  "scope": "Synthetic observation-only invariance test. PICK_TARGET selects the unique identifiable mug; it does not assert executable grasp success. The sensor-layer patch changes no world object or approach geometry.",
+  "snapshot_sha256": "80f56667ede9c4b4e0ad9accd1b5c6e5030f21596a199e1f55a834e0ece90408"
+}

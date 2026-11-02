@@ -1,0 +1,47 @@
+.venv/
+__pycache__/
+*.egg-info/
+data/
+.env
+node_modules/
+dist/
+
+# Local credentials and generated files
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+.pytest_cache/
+playwright-report/
+test-results/
+
+# Local audits, credentials, editor state, and temporary outputs
+*.log
+*.tmp
+*.swp
+*~
+.cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.vscode/
+.idea/
+credentials.json
+*credentials*.json
+secrets.json
+*.p12
+*.pfx
+# Superseded sample images and local rehearsal output
+public/examples/egocentric-*.jpg
+docs/demo-rehearsal.json
+agent-api/
+policy-api/
+api-traces/
+*.sqlite
+*.sqlite3
+.netrc
+.npmrc
+credentials.*
+secrets.*

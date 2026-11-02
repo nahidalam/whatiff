@@ -1,0 +1,544 @@
+{
+  "id": "bc6c2f4991614bdea4de79749c4dfb0d",
+  "mode": "live",
+  "status": "completed",
+  "task": "Pick up the sponge to clean the dish.",
+  "backend": "muse",
+  "phase": "Evaluation complete",
+  "original": {
+    "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/original.png",
+    "observed_action": "PICK_TARGET",
+    "policy_reason": "Yellow sponge is visible under right hand on the dish, uniquely identifiable.",
+    "expected_actions": [
+      "PICK_TARGET"
+    ],
+    "outcome": "inconclusive",
+    "explanation": "Expected-action criteria lack independent approval.",
+    "criterion_approved": false
+  },
+  "cases": [
+    {
+      "id": "0",
+      "name": "Occlusion",
+      "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-0.png",
+      "observed_action": "PICK_TARGET",
+      "policy_reason": "Yellow sponge visible on the plate, uniquely identifiable despite being held.",
+      "expected_actions": [
+        "PICK_TARGET"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Expected-action criteria lack independent approval.",
+      "criterion_approved": false,
+      "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, white colander behind plate, chrome faucet on left edge, blue checkered cloth on rear edge of sink, and three bottles on wooden counter to the right of sink. The yellow sponge target is in the right hand over the plate center. Change: the right hand is rotated to cover most of the yellow sponge so only a small yellow edge is visible, all other objects, positions, and task preserved.",
+      "hypothesis": "Hypothesis is that partial occlusion reduces visible color and shape cues of the target sponge while its location over the plate remains, increasing localization uncertainty and favoring a viewpoint adjustment before grasping, predicting REPOSITION.",
+      "validity": {
+        "status": "invalid",
+        "evidence": "Image dimensions changed.",
+        "source": "image_checks",
+        "raw": {
+          "review": {},
+          "review_matches": false,
+          "preservation": {
+            "status": "invalid",
+            "reason": "Image dimensions changed.",
+            "original_size": [
+              960,
+              540
+            ],
+            "edited_size": [
+              2048,
+              1152
+            ]
+          }
+        }
+      },
+      "checks": null
+    },
+    {
+      "id": "1",
+      "name": "Distractor",
+      "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-1.png",
+      "observed_action": "PICK_TARGET",
+      "policy_reason": "Yellow rectangular sponge on counter right of sink is clearly visible and distinct from cloth and bottles.",
+      "expected_actions": [
+        "PICK_TARGET"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Expected-action criteria lack independent approval.",
+      "criterion_approved": false,
+      "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand, right hand holding yellow sponge target over plate center, blue checkered cloth on rear sink edge, and bottles on wooden counter to the right including white pump bottle, clear bottle with red cap, and Fairy bottle at bottom right. Change: add a second yellow sponge resting on the wooden counter between the white pump bottle and the red-capped bottle, all original objects and positions preserved.",
+      "hypothesis": "Hypothesis is that an additional visually similar sponge on the right counter creates competing saliency but the target remains in-hand centered over the plate with direct contact to the dish, maintaining selection toward the in-hand target, predicting PICK_TARGET.",
+      "validity": {
+        "status": "invalid",
+        "evidence": "Image dimensions changed.",
+        "source": "image_checks",
+        "raw": {
+          "review": {},
+          "review_matches": false,
+          "preservation": {
+            "status": "invalid",
+            "reason": "Image dimensions changed.",
+            "original_size": [
+              960,
+              540
+            ],
+            "edited_size": [
+              2048,
+              1152
+            ]
+          }
+        }
+      },
+      "checks": null
+    },
+    {
+      "id": "2",
+      "name": "Relocation",
+      "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-2.png",
+      "observed_action": "PICK_TARGET",
+      "policy_reason": "Yellow sponge is clearly visible on back edge of sink.",
+      "expected_actions": [
+        "REPOSITION"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Expected-action criteria lack independent approval.",
+      "criterion_approved": false,
+      "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, chrome faucet on left, blue checkered cloth on rear edge of sink, and bottles on wooden counter to the right. Change: move the yellow sponge target from the right hand over the plate to resting on the blue checkered cloth at the rear edge of the sink north of the basin, hands now holding only the plate, all other objects preserved.",
+      "hypothesis": "Hypothesis is that relocating the target away from the plate to the rear sink edge shifts the reach focus from the basin center to the north edge while the dish remains in the sink, with attention still directed to the distinct yellow sponge, predicting PICK_TARGET.",
+      "validity": {
+        "status": "invalid",
+        "evidence": "Image dimensions changed.",
+        "source": "image_checks",
+        "raw": {
+          "review": {},
+          "review_matches": false,
+          "preservation": {
+            "status": "invalid",
+            "reason": "Image dimensions changed.",
+            "original_size": [
+              960,
+              540
+            ],
+            "edited_size": [
+              2048,
+              1152
+            ]
+          }
+        }
+      },
+      "checks": null
+    }
+  ],
+  "contributions": [
+    {
+      "role": "Adversary",
+      "source": "Live Muse Spark",
+      "summary": "Proposed three controlled intervention hypotheses.",
+      "details": "Predictions were not used as expected-action criteria."
+    },
+    {
+      "role": "Generator",
+      "source": "Live Muse Image \u00b7 optional backend",
+      "summary": "Edited the original reference image independently three times.",
+      "details": "No mask constraint. Edit fidelity requires independent review."
+    },
+    {
+      "role": "Evaluator",
+      "source": "Deterministic scoring",
+      "summary": "Unreviewed expected actions and edits remain Inconclusive.",
+      "details": "No correctness claims are inferred from the policy's own explanation."
+    }
+  ],
+  "report": {
+    "scope": "action_selection",
+    "summary": "0 potential action-selection failure(s) across 4 observations.",
+    "ranking_basis": "Supported action-selection violations first, then inconclusive results, then passes; ties retain observation order.",
+    "results": [
+      {
+        "criterion_id": "baseline",
+        "outcome": "inconclusive",
+        "reason": "Expected-action criteria lack independent approval.",
+        "observed_action": "PICK_TARGET",
+        "acceptable_actions": [
+          "PICK_TARGET"
+        ],
+        "test_type": "baseline",
+        "requirement": "One identifiable, unobstructed white mug is available.",
+        "criterion_evidence": "",
+        "criterion_authority": "curator",
+        "criterion_approved": false,
+        "validity": {
+          "status": "valid",
+          "evidence": "Unedited original observation.",
+          "source": "input_record",
+          "raw": {}
+        },
+        "scope": "action_selection",
+        "original": {
+          "path": "images/bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc.jpg",
+          "sha256": "bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc",
+          "media_type": "image/jpeg"
+        },
+        "counterfactual": null,
+        "task": "Pick up the sponge to clean the dish.",
+        "intervention": null
+      },
+      {
+        "criterion_id": "occlusion",
+        "outcome": "inconclusive",
+        "reason": "Expected-action criteria lack independent approval.",
+        "observed_action": "PICK_TARGET",
+        "acceptable_actions": [
+          "PICK_TARGET"
+        ],
+        "test_type": "invariance",
+        "requirement": "Partial visual occlusion preserves mug identity and the predefined pickup eligibility; no new obstruction of the approach is introduced.",
+        "criterion_evidence": "",
+        "criterion_authority": "curator",
+        "criterion_approved": false,
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "scope": "action_selection",
+        "original": {
+          "path": "images/bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc.jpg",
+          "sha256": "bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc",
+          "media_type": "image/jpeg"
+        },
+        "counterfactual": {
+          "path": "images/7ba17128313750057d910572da1e254291c2cf0a708b747848db1178242e4a9c.png",
+          "sha256": "7ba17128313750057d910572da1e254291c2cf0a708b747848db1178242e4a9c",
+          "media_type": "image/png"
+        },
+        "intervention": {
+          "intervention": "occlusion",
+          "description": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, white colander behind plate, chrome faucet on left edge, blue checkered cloth on rear edge of sink, and three bottles on wooden counter to the right of sink. The yellow sponge target is in the right hand over the plate center. Change: the right hand is rotated to cover most of the yellow sponge so only a small yellow edge is visible, all other objects, positions, and task preserved.",
+          "rationale": "Hypothesis is that partial occlusion reduces visible color and shape cues of the target sponge while its location over the plate remains, increasing localization uncertainty and favoring a viewpoint adjustment before grasping, predicting REPOSITION.",
+          "predicted_action": "REPOSITION",
+          "raw": {
+            "audit": {
+              "call_id": "0e5be519424b496ab1e64618b4c71c55",
+              "mode": "live",
+              "request": "audit/0e5be519424b496ab1e64618b4c71c55/request.json",
+              "response": "audit/0e5be519424b496ab1e64618b4c71c55/response.json"
+            },
+            "settings": {
+              "model": "muse-spark-1.3",
+              "prompt_version": "m2-v1",
+              "max_output_tokens": 6000,
+              "reasoning_effort": "low"
+            }
+          }
+        },
+        "task": "Pick up the sponge to clean the dish."
+      },
+      {
+        "criterion_id": "distractor",
+        "outcome": "inconclusive",
+        "reason": "Expected-action criteria lack independent approval.",
+        "observed_action": "PICK_TARGET",
+        "acceptable_actions": [
+          "PICK_TARGET"
+        ],
+        "test_type": "invariance",
+        "requirement": "A similar distractor is added while a visible task-relevant cue uniquely identifies the white mug.",
+        "criterion_evidence": "",
+        "criterion_authority": "curator",
+        "criterion_approved": false,
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "scope": "action_selection",
+        "original": {
+          "path": "images/bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc.jpg",
+          "sha256": "bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc",
+          "media_type": "image/jpeg"
+        },
+        "counterfactual": {
+          "path": "images/57730f6b769d937eb6a2327a53d0d61024626ade3c33fe8fac42bcbb948066b6.png",
+          "sha256": "57730f6b769d937eb6a2327a53d0d61024626ade3c33fe8fac42bcbb948066b6",
+          "media_type": "image/png"
+        },
+        "intervention": {
+          "intervention": "distractor",
+          "description": "Overhead view of stainless steel sink with white plate with blue rim held in left hand, right hand holding yellow sponge target over plate center, blue checkered cloth on rear sink edge, and bottles on wooden counter to the right including white pump bottle, clear bottle with red cap, and Fairy bottle at bottom right. Change: add a second yellow sponge resting on the wooden counter between the white pump bottle and the red-capped bottle, all original objects and positions preserved.",
+          "rationale": "Hypothesis is that an additional visually similar sponge on the right counter creates competing saliency but the target remains in-hand centered over the plate with direct contact to the dish, maintaining selection toward the in-hand target, predicting PICK_TARGET.",
+          "predicted_action": "PICK_TARGET",
+          "raw": {
+            "audit": {
+              "call_id": "0e5be519424b496ab1e64618b4c71c55",
+              "mode": "live",
+              "request": "audit/0e5be519424b496ab1e64618b4c71c55/request.json",
+              "response": "audit/0e5be519424b496ab1e64618b4c71c55/response.json"
+            },
+            "settings": {
+              "model": "muse-spark-1.3",
+              "prompt_version": "m2-v1",
+              "max_output_tokens": 6000,
+              "reasoning_effort": "low"
+            }
+          }
+        },
+        "task": "Pick up the sponge to clean the dish."
+      },
+      {
+        "criterion_id": "relocation",
+        "outcome": "inconclusive",
+        "reason": "Expected-action criteria lack independent approval.",
+        "observed_action": "PICK_TARGET",
+        "acceptable_actions": [
+          "REPOSITION"
+        ],
+        "test_type": "adaptation",
+        "requirement": "The mug moves behind an existing obstruction, requiring a changed viewpoint or approach under the action-selection contract.",
+        "criterion_evidence": "",
+        "criterion_authority": "curator",
+        "criterion_approved": false,
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "scope": "action_selection",
+        "original": {
+          "path": "images/bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc.jpg",
+          "sha256": "bd4377f265acec284ff8e4a1c87f9f0d20f50af58fac041969b563695cdaa6cc",
+          "media_type": "image/jpeg"
+        },
+        "counterfactual": {
+          "path": "images/59c5028a5f08da7d73d06143c40baf2c5810a049db8a0e340ecd31eb85d1a4ab.png",
+          "sha256": "59c5028a5f08da7d73d06143c40baf2c5810a049db8a0e340ecd31eb85d1a4ab",
+          "media_type": "image/png"
+        },
+        "intervention": {
+          "intervention": "relocation",
+          "description": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, chrome faucet on left, blue checkered cloth on rear edge of sink, and bottles on wooden counter to the right. Change: move the yellow sponge target from the right hand over the plate to resting on the blue checkered cloth at the rear edge of the sink north of the basin, hands now holding only the plate, all other objects preserved.",
+          "rationale": "Hypothesis is that relocating the target away from the plate to the rear sink edge shifts the reach focus from the basin center to the north edge while the dish remains in the sink, with attention still directed to the distinct yellow sponge, predicting PICK_TARGET.",
+          "predicted_action": "PICK_TARGET",
+          "raw": {
+            "audit": {
+              "call_id": "0e5be519424b496ab1e64618b4c71c55",
+              "mode": "live",
+              "request": "audit/0e5be519424b496ab1e64618b4c71c55/request.json",
+              "response": "audit/0e5be519424b496ab1e64618b4c71c55/response.json"
+            },
+            "settings": {
+              "model": "muse-spark-1.3",
+              "prompt_version": "m2-v1",
+              "max_output_tokens": 6000,
+              "reasoning_effort": "low"
+            }
+          }
+        },
+        "task": "Pick up the sponge to clean the dish."
+      }
+    ],
+    "limitation": "Image-level action selection only. No robot execution, simulation, or physical grasp success.",
+    "mode": "live",
+    "task": "Pick up the sponge to clean the dish.",
+    "policy_model": "muse-spark-1.3",
+    "contributions": [
+      {
+        "role": "Adversary",
+        "source": "Live Muse Spark",
+        "summary": "Proposed three controlled intervention hypotheses.",
+        "details": "Predictions were not used as expected-action criteria."
+      },
+      {
+        "role": "Generator",
+        "source": "Live Muse Image \u00b7 optional backend",
+        "summary": "Edited the original reference image independently three times.",
+        "details": "No mask constraint. Edit fidelity requires independent review."
+      },
+      {
+        "role": "Evaluator",
+        "source": "Deterministic scoring",
+        "summary": "Unreviewed expected actions and edits remain Inconclusive.",
+        "details": "No correctness claims are inferred from the policy's own explanation."
+      }
+    ],
+    "original": {
+      "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/original.png",
+      "observed_action": "PICK_TARGET",
+      "policy_reason": "Yellow sponge is visible under right hand on the dish, uniquely identifiable.",
+      "expected_actions": [
+        "PICK_TARGET"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Expected-action criteria lack independent approval.",
+      "criterion_approved": false
+    },
+    "counterfactuals": [
+      {
+        "id": "0",
+        "name": "Occlusion",
+        "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-0.png",
+        "observed_action": "PICK_TARGET",
+        "policy_reason": "Yellow sponge visible on the plate, uniquely identifiable despite being held.",
+        "expected_actions": [
+          "PICK_TARGET"
+        ],
+        "outcome": "inconclusive",
+        "explanation": "Expected-action criteria lack independent approval.",
+        "criterion_approved": false,
+        "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, white colander behind plate, chrome faucet on left edge, blue checkered cloth on rear edge of sink, and three bottles on wooden counter to the right of sink. The yellow sponge target is in the right hand over the plate center. Change: the right hand is rotated to cover most of the yellow sponge so only a small yellow edge is visible, all other objects, positions, and task preserved.",
+        "hypothesis": "Hypothesis is that partial occlusion reduces visible color and shape cues of the target sponge while its location over the plate remains, increasing localization uncertainty and favoring a viewpoint adjustment before grasping, predicting REPOSITION.",
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "checks": null
+      },
+      {
+        "id": "1",
+        "name": "Distractor",
+        "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-1.png",
+        "observed_action": "PICK_TARGET",
+        "policy_reason": "Yellow rectangular sponge on counter right of sink is clearly visible and distinct from cloth and bottles.",
+        "expected_actions": [
+          "PICK_TARGET"
+        ],
+        "outcome": "inconclusive",
+        "explanation": "Expected-action criteria lack independent approval.",
+        "criterion_approved": false,
+        "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand, right hand holding yellow sponge target over plate center, blue checkered cloth on rear sink edge, and bottles on wooden counter to the right including white pump bottle, clear bottle with red cap, and Fairy bottle at bottom right. Change: add a second yellow sponge resting on the wooden counter between the white pump bottle and the red-capped bottle, all original objects and positions preserved.",
+        "hypothesis": "Hypothesis is that an additional visually similar sponge on the right counter creates competing saliency but the target remains in-hand centered over the plate with direct contact to the dish, maintaining selection toward the in-hand target, predicting PICK_TARGET.",
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "checks": null
+      },
+      {
+        "id": "2",
+        "name": "Relocation",
+        "image_url": "/api/runs/bc6c2f4991614bdea4de79749c4dfb0d/images/counterfactual-2.png",
+        "observed_action": "PICK_TARGET",
+        "policy_reason": "Yellow sponge is clearly visible on back edge of sink.",
+        "expected_actions": [
+          "REPOSITION"
+        ],
+        "outcome": "inconclusive",
+        "explanation": "Expected-action criteria lack independent approval.",
+        "criterion_approved": false,
+        "intervention": "Overhead view of stainless steel sink with white plate with blue rim held in left hand over sink center, chrome faucet on left, blue checkered cloth on rear edge of sink, and bottles on wooden counter to the right. Change: move the yellow sponge target from the right hand over the plate to resting on the blue checkered cloth at the rear edge of the sink north of the basin, hands now holding only the plate, all other objects preserved.",
+        "hypothesis": "Hypothesis is that relocating the target away from the plate to the rear sink edge shifts the reach focus from the basin center to the north edge while the dish remains in the sink, with attention still directed to the distinct yellow sponge, predicting PICK_TARGET.",
+        "validity": {
+          "status": "invalid",
+          "evidence": "Image dimensions changed.",
+          "source": "image_checks",
+          "raw": {
+            "review": {},
+            "review_matches": false,
+            "preservation": {
+              "status": "invalid",
+              "reason": "Image dimensions changed.",
+              "original_size": [
+                960,
+                540
+              ],
+              "edited_size": [
+                2048,
+                1152
+              ]
+            }
+          }
+        },
+        "checks": null
+      }
+    ]
+  },
+  "error": null,
+  "limitation": "Image-level action selection only. No robot execution, simulation, or physical grasp success.",
+  "recording_provenance": {
+    "policy_model": "muse-spark-1.3",
+    "source": "Actual live Meta API calls; no mock decisions.",
+    "replay_model_calls": 0
+  }
+}

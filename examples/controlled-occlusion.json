@@ -1,0 +1,15 @@
+{
+  "source_image": "tabletop-original.png",
+  "task": "Pick up the white mug.",
+  "scope": "Synthetic observation-only invariance test. PICK_TARGET selects the unique identifiable mug; it does not assert executable grasp success. The sensor-layer patch changes no world object or approach geometry.",
+  "proposal": {
+    "intervention": "occlusion",
+    "description": "Apply one opaque sensor-layer patch to the left portion of the SAM-grounded white mug; keep the remaining rim and right-side handle visible. Preserve all pixels outside the patch.",
+    "rationale": "Test action-selection invariance under partial observation occlusion.",
+    "predicted_action": "PICK_TARGET"
+  },
+  "criteria": [
+    {"id": "baseline", "intervention": "baseline", "test_type": "baseline", "acceptable_actions": ["PICK_TARGET"], "requirement": "One identifiable, unobstructed white mug is available.", "evidence": "", "authority": "independent_synthetic_fixture_review", "approved": false},
+    {"id": "occlusion", "intervention": "occlusion", "test_type": "invariance", "acceptable_actions": ["PICK_TARGET"], "requirement": "Partial visual occlusion preserves mug identity and the predefined pickup eligibility; no new obstruction of the approach is introduced.", "evidence": "", "authority": "independent_synthetic_fixture_review", "approved": false}
+  ]
+}
