@@ -53,14 +53,23 @@ Customers could investigate weaknesses before committing to expensive physical t
    verification status, and evidence identifiers. Unverified records stay labeled.
 
 ```mermaid
-flowchart LR
-    I[Image and task] --> A[Adversary: scenario planning]
-    A --> G[Generator: edit and ground]
-    I --> E[Evaluator: isolated policy testing and deterministic scoring]
-    G --> E
-    G --> H[Human review: edit and independent action criteria]
-    H --> E
-    E --> X[JSON export: verified only when required checks and approvals pass]
+flowchart TD
+    I[Image and task] --> A[Adversary]
+    A --> G[Generator]
+    subgraph E[Evaluator]
+        direction TD
+        P[Policy testing] --> M[Muse Spark Open via Baseten]
+        M --> S[Deterministic scoring]
+        V[Edit checks] --> S
+    end
+    G --> P
+    I --> P
+    G --> V
+    G --> H[Human review]
+    H --> C[Edit and action approvals]
+    C --> S
+    S --> X[JSON and image references]
+    X --> R[Verified only if all checks and approvals pass]
 ```
 
 ## Generated data and export
