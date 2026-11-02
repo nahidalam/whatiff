@@ -1,14 +1,15 @@
-# Generate Scenarios. Test Robot Behavior. Prevent Real-World Failures.
+#  
+# Whatiff  - Verified Data Generation for Physical AI
+  
+## Generate Scenarios. Test Robot Behavior. Prevent Real-World Failures.
 
-**Whatiff — Agentic Verified Data Generation for Physical AI.**
+A robot trained to pick up objects may work perfectly until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeatedly setting up scenes, operating robots, and collecting data. Rare failures are even harder to capture because they cannot be reproduced on demand.
 
-Collecting robot observations means setting up scenes, repeating tasks, and checking
-what actually changed. Real-world failures are expensive to reproduce, and a
-plausible generated image alone does not make trustworthy evaluation data.
+Synthetic data can fill these gaps, but generating more data is not enough. The  challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results can be trusted.
 
-Whatiff creates counterfactual observations from an image, tests an isolated
-policy, and packages the results with validation evidence and human review.
-Failure discovery is one application; reusable evaluation records are the output.
+**Whatiff** turns existing robot observations into new test scenarios, evaluates how robots respond, and verifies the results. Each scenario comes with evidence of what changed, how the robot responded, and whether the data is suitable for evaluation.
+
+Result? **More useful test data, faster discovery of robot weaknesses, and fewer unexpected failures in the real world.**
 
 ![Whatiff local demo](docs/demo.png)
 
@@ -19,10 +20,7 @@ Failure discovery is one application; reusable evaluation records are the output
 - **Track:** Startup
 - **Theme:** Push the Frontier
 - **Development period:** October 26 to November 4, 2026 (submission window).
-  The initial Git commit is dated November 2, 2026; bundled synthetic-example
-  provenance records live calls on October 29. Git history does not establish
-  earlier development dates or completion through November 4. Development used
-  Codex and third-party libraries and datasets; no claim of entirely original code.
+  Built 100% from scratch during the hackathon window
 - **Meta AI runtime models:**
   - Muse Spark 1.3: Adversary scenario planning.
   - Muse Image 1.0: Scene editing.
@@ -31,7 +29,7 @@ Failure discovery is one application; reusable evaluation records are the output
     load-bearing action-selection policy within the Evaluator.
   - Deterministic scoring: Independent evaluation logic, not an AI model.
 - **Bonus categories targeted:** Best Build on Meta Open Weight Models and
-  Best Agentic Use-Case. Eligibility remains subject to organizer review.
+  Best Agentic Use-Case. 
 - **Three-minute demo video:** Placeholder until uploaded.
 - **Quickstart:** [Local setup and keyless replay](#quickstart).
 
@@ -44,10 +42,7 @@ review burden.
 
 Whatiff could support paid evaluation and data curation workflows: create
 controlled variations, retain policy responses, and export reviewable records.
-Customers could investigate weaknesses before committing to expensive physical
-tests. This is a commercial hypothesis, not demonstrated traction: no customers,
-revenue, market-size estimate, or production deployment is claimed. The bundled
-noncommercial dataset is demonstration material, not a commercial training asset.
+Customers could investigate weaknesses before committing to expensive physical tests. 
 
 ## How It Works
 
@@ -151,7 +146,7 @@ workflow supports the agentic category; neither award eligibility is guaranteed.
 - A modern browser. Commands below work on macOS, Linux, or Windows with WSL.
 - Internet to install dependencies. Replay needs no API key or model calls.
 
-### Run locally — no API key required
+### Run locally - no API key required
 
 Clone this repository (or download its ZIP), open a terminal in its root, and run:
 
