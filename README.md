@@ -27,25 +27,29 @@
 
 
 ## 
-A robot trained to pick up objects may work perfectly until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeatedly setting up scenes, operating robots, and collecting data. Rare failures are even harder to capture because they cannot be reproduced on demand.
+A robot trained to pick up objects may perform well until a target is partially hidden, another object looks similar, or something moves unexpectedly. Testing these cases in the real world requires repeated scene setup, robot operation, and data collection. Rare failures are especially difficult to reproduce on demand.
 
-Synthetic data can fill these gaps, but generating more data is not enough. The  challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results can be trusted.
+Synthetic data helps create these missing conditions. The key challenge is knowing which scenarios are valid, which ones expose robot weaknesses, and which results are reliable enough to use.
 
-**Whatiff** turns existing robot observations into new test scenarios, evaluates how robots respond, and verifies the results. Each scenario comes with evidence of what changed, how the robot responded, and whether the data is suitable for evaluation.
+Whatiff closes the loop between scenario generation and policy evaluation. It turns existing robot observations into controlled counterfactual scenarios, runs the robot policy against them, and verifies the resulting behavior. Each scenario records what changed, how the policy responded, and whether the evidence supports a potential failure.
 
-Result? **More useful test data, faster discovery of robot weaknesses, and fewer unexpected failures in the real world.**
+Result: faster discovery of robot weaknesses, verified failure data, and fewer unexpected failures in real world.
 
-### Scenario Generation and Robot Evaluation
+## Scenario Generation and Policy Evaluation
 
-In this cooking example, the robot's task is to pick up a spoon to stir vegetables in a pan. Whatiff generates three alternative scenarios to test how the robot responds to changes in the scene:
+In the cooking example, the robot must identify a spoon used to stir vegetables.
 
-- **Occlusion:** Partially hides the spoon to test whether the robot can still identify it.
-- **Distractor:** Introduces a similar object to test whether the robot can distinguish the intended target.
-- **Relocation:** Moves the spoon from the plate to the right of the metal rack beside the stove to test whether the robot can identify it in a new location.
+Whatiff generates three controlled variants:
 
-In the selected relocation scenario, the Evaluator uses Muse Spark Open through Baseten. **The policy selects `PICK_TARGET` and identifies the relocated spoon on the metal rack.** This demonstrates target recognition in the generated observation, not successful physical pickup.
+- Occlusion: partially hides the spoon.
+- Distractor: adds a visually similar object.
+- Relocation: moves the spoon to a new position.
 
-Whatiff records the original and modified images, policy decisions, and validation evidence for all three scenarios. Each remains **Needs Review** until the required checks and independent action criteria are satisfied.
+The Evaluator runs the policy independently on each modified observation. The policy does not receive intervention metadata or expected answers.
+
+If a validated scenario causes an action that violates an independently approved criterion, Whatiff records it as a Potential Failure.
+
+If the evidence is incomplete, the result remains Needs Review.
 
 ![Whatiff local demo](docs/demo_image.png)
 
@@ -59,14 +63,17 @@ Whatiff automatically checks generated scenarios for validity and evaluates robo
 
 ## Why It Matters
 
-Robotics developers, Physical AI labs, and AI data providers need varied
-observations and defensible labels. Collecting every occlusion or object change
-in the physical world takes time; manually checking generated scenes adds another
-review burden.
+Robotics teams and Physical AI data providers can generate or collect large amounts of data. The scarce part is verified evidence that a scenario exposes a real weakness in the agent.
 
-Whatiff could support paid evaluation and data curation workflows: create
-controlled variations, retain policy responses, and export reviewable records.
-Customers could investigate weaknesses before committing to expensive physical tests. 
+Whatiff turns scenario generation into a closed-loop evaluation workflow. Each run records:
+
+- what changed in the scene
+- how the policy responded
+- whether the edit passed validation
+- whether the action matched approved criteria
+- the evidence needed to review the result
+
+This can help teams prioritize high-value failure cases before expensive physical testing or post-training.
 
 ## How It Works
 
